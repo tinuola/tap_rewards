@@ -1,58 +1,78 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var low = require("lowdb");
+var path = require("path");
+var uuid = require("uuid");
 var app = express();
 
+//=======
+//express Usage
+//=======
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+
+//=======
+//bodyParser Usage
+//=======
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 //=======
-//Hard-coded data
+//lowdb Usage
 //=======
-var riders = [
-  {
-    name: "Alice",
-    email: "alice-demo@gmail.com",
-    image: "",
-    pointBalance: 5000
-  },
-  {
-    name: "Lara",
-    email: "Lara-demo@gmail.com",
-    image: "",
-    pointBalance: 5000
-  }
-];
+//create data json files
+const FileSync = require("lowdb/adapters/FileSync");
+const adapter1 = new FileSync("data/riderData.json");
+const adapter2 = new FileSync("data/rewardData.json");
+const riderData = low(adapter1);
+const rewardData = low(adapter2);
 
-var rewards = [
-  {
-    rewardType: "One-Day Free Metro Ride",
-    rewardId: "01",
-    rewardImg: "",
-    rewardPoints: 100
-  },
-  {
-    rewardType: "One-Day Free Car Parking",
-    rewardId: "02",
-    rewardImg: "",
-    rewardPoints: 200
-  },
-  {
-    rewardType: "One Free Lyft Ride to Metro",
-    rewardId: "03",
-    rewardImg: "",
-    rewardPoints: 300
-  },
-  {
-    rewardType: "One-Week Free Metro Ride",
-    rewardId: "04",
-    rewardImg: "",
-    rewardPoints: 500
-  }
-]
+//=======
+//Data schema
+//=======
+// Set defaults
+riderData.defaults({ riders: []})
+  .write()
 
+// rewardData.defaults({ rewards: []})
+//   .write()
+
+// Add a rider
+// riderData.get("riders")
+//   .push({
+//     name: "Alice",
+//     email: "alice-demo@gmail.com",
+//     id: uuid(),
+//     pointBalance: 5000,
+//     image: ""
+//   })
+//   .write()
+
+//Add a rider
+// riderData.get("riders")
+//   .push({
+//     name: "Lara",
+//     email: "Lara-demo@gmail.com",
+//     id: uuid(),
+//     pointBalance: 8000,
+//     image: ""
+//   })
+//   .write()
+
+
+//=======
+//[Temp] Database data
+//=======
+//Get all info from rider and reward dbs
+var riders = riderData.get("riders").value();
+var rewards = rewardData.get("rewards").value();
+
+//Single user info
 var rider = riders[0].name;
 var balance = riders[0].pointBalance;
+// console.log(rider);
+// console.log(balance);
+
 
 //=======
 //Routes
@@ -69,10 +89,20 @@ app.get("/dashboard", function(req, res){
 });
 
 app.post("/dashboard", function(req, res){
-  //console.log(req.body)
-  var points = req.body.rewardPoints
+  var points = req.body.rewardPoints;
   balance -= points;
-  res.render("dashboard", {rider:rider, balance:balance, rewards:rewards});
+  //console.log(req.body)
+  //console.log(points);
+  //console.log(typeof balance);
+  //console.log(rider);
+  //console.log(balance);
+
+  riderData.get('riders')
+    .find({ name: rider })
+    .assign({ pointBalance: balance})
+    .write()
+
+  res.redirect("/dashboard");
 });
 
 //Login page
