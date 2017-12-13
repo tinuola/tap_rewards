@@ -1,0 +1,33 @@
+body{
+
+}
+.form-control {
+    height: 50px;
+}
+
+.login-form-box {
+  width: 50%;
+  margin: 35px auto;
+}
+
+.reward-box-container {
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 0px auto;
+  padding: 30px;
+  background: #e4e3e3;
+}
+
+.reward-box {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 9px;
+    background: white;
+}
