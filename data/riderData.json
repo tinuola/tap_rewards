@@ -1,17 +1,53 @@
 {
   "riders": [
     {
-      "name": "alice",
-      "email": "hello@alice.com",
-      "id": "3de036ed-6451-4dbe-a5d3-334e66c5855c",
-      "pointBalance": 5100,
+      "firstName": "Alice",
+      "lastName": "Magic",
+      "email": "alice@gmail.com",
+      "username": "alice",
+      "password": "$2a$10$WKFskINoRIBr7HcxhsipwunphrFkk7CnOk5pYcAsQfvMkCQvq0wDC",
+      "id": "3a80dc5d-1005-47fb-ae66-5db22c65dc62",
+      "pointBalance": 8000,
       "image": ""
     },
     {
-      "name": "lara",
+      "firstName": "Lara",
+      "lastName": "Lagos",
       "email": "hi@lara.com",
-      "id": "d9587c03-a730-418a-85f2-b2bca32061cf",
-      "pointBalance": 7300,
+      "username": "lara",
+      "password": "$2a$10$WikxoUsJMgDDx3uoGy9nKeiz/oFaqQLYeAtyrM.MJg9V/WsxxZnOG",
+      "id": "2fe51e1e-3791-4ada-b0d2-725381f507a1",
+      "pointBalance": 8000,
+      "image": ""
+    },
+    {
+      "firstName": "oprah",
+      "lastName": "winfrey",
+      "email": "oprah@own.com",
+      "username": "oprah",
+      "password": "$2a$10$Zfk7yS/lk6mYbCRwMU9XvuP8WeY66POcY1fg.Wdc0rpffjcTRMTfC",
+      "id": "af644ac3-986e-42d9-9bca-1552826ee219",
+      "pointBalance": 8000,
+      "image": ""
+    },
+    {
+      "firstName": "luke",
+      "lastName": "cage",
+      "email": "luke@marvel.com",
+      "username": "luke",
+      "password": "$2a$10$Ly2DbuQfI0a1Pcx3VA0fluddHv9cYasXtC.ipDGjFVYAA.2KC3G5W",
+      "id": "fc39a888-bb31-418c-8795-fa9197f65afd",
+      "pointBalance": 8000,
+      "image": ""
+    },
+    {
+      "firstName": "jessica",
+      "lastName": "jones",
+      "email": "jess@marvel.com",
+      "username": "jess",
+      "password": "$2a$10$CsbpUzxIQ3PVINpFt4UXwudxZoj2iXT/G7MeTZUdtFoof5FVlHcee",
+      "id": "21bae137-ffd1-4d4a-b629-673dcfe08d84",
+      "pointBalance": 8000,
       "image": ""
     }
   ]

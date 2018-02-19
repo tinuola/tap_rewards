@@ -1,6 +1,13 @@
 # Tap Rewards App
 
 
+
+---
+### Step_Four
+* ~~Add signup form~~
+* ~~Sign up new users and add to database~~
+* ~~Update database with new fields (name/username)~~
+
 ---
 ### Step_Three
 * ~~List users on main dashboard and link to individual dashboards~~
