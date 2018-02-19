@@ -1,17 +1,17 @@
 {
   "riders": [
     {
-      "name": "Alice",
+      "name": "alice",
       "email": "hello@alice.com",
       "id": "3de036ed-6451-4dbe-a5d3-334e66c5855c",
-      "pointBalance": 5700,
+      "pointBalance": 5100,
       "image": ""
     },
     {
-      "name": "Lara",
+      "name": "lara",
       "email": "hi@lara.com",
       "id": "d9587c03-a730-418a-85f2-b2bca32061cf",
-      "pointBalance": 8000,
+      "pointBalance": 7300,
       "image": ""
     }
   ]
