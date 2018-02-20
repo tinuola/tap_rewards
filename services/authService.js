@@ -53,6 +53,7 @@ exports.signup = function signup(options, res) {
   }
   var rider = riderData.get('riders').find({id: options.id}).value();
   console.log(rider);
+  //+ "/" + rider.id
 
-  res.redirect(options.signupSuccessRedirectUrl + "/" + rider.id );
+  res.redirect(options.signupSuccessRedirectUrl);
 };

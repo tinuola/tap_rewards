@@ -11,42 +11,22 @@
       "image": ""
     },
     {
-      "firstName": "Lara",
-      "lastName": "Lagos",
-      "email": "hi@lara.com",
-      "username": "lara",
-      "password": "$2a$10$WikxoUsJMgDDx3uoGy9nKeiz/oFaqQLYeAtyrM.MJg9V/WsxxZnOG",
-      "id": "2fe51e1e-3791-4ada-b0d2-725381f507a1",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "test",
+      "username": "test",
+      "password": "$2a$10$DUBVxbfnTw10uzO9dg4SZesLh6AnYHYCYx7LvhzA/oskFaJO6pzgu",
+      "id": "59f77f43-411d-492f-803a-7b1fa478efce",
       "pointBalance": 8000,
       "image": ""
     },
     {
-      "firstName": "oprah",
-      "lastName": "winfrey",
-      "email": "oprah@own.com",
-      "username": "oprah",
-      "password": "$2a$10$Zfk7yS/lk6mYbCRwMU9XvuP8WeY66POcY1fg.Wdc0rpffjcTRMTfC",
-      "id": "af644ac3-986e-42d9-9bca-1552826ee219",
-      "pointBalance": 8000,
-      "image": ""
-    },
-    {
-      "firstName": "luke",
-      "lastName": "cage",
-      "email": "luke@marvel.com",
-      "username": "luke",
-      "password": "$2a$10$Ly2DbuQfI0a1Pcx3VA0fluddHv9cYasXtC.ipDGjFVYAA.2KC3G5W",
-      "id": "fc39a888-bb31-418c-8795-fa9197f65afd",
-      "pointBalance": 8000,
-      "image": ""
-    },
-    {
-      "firstName": "jessica",
-      "lastName": "jones",
-      "email": "jess@marvel.com",
-      "username": "jess",
-      "password": "$2a$10$CsbpUzxIQ3PVINpFt4UXwudxZoj2iXT/G7MeTZUdtFoof5FVlHcee",
-      "id": "21bae137-ffd1-4d4a-b629-673dcfe08d84",
+      "firstName": "test2",
+      "lastName": "test2",
+      "email": "test2@test.com",
+      "username": "test2",
+      "password": "$2a$10$zRE3fCPQ5BKzOUopZ5FiHe5DEkkNzSCxvKGCyt1vSVA8Y.OE24PuK",
+      "id": "feeb1102-34e4-4368-a3dd-0ececd3944db",
       "pointBalance": 8000,
       "image": ""
     }

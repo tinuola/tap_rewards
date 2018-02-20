@@ -1,6 +1,11 @@
 # Tap Rewards App
 
 
+---
+### Step_Five
+* Figure out database persistence
+* Add sessions? (will it fix above?)
+* Add login/logout
 
 ---
 ### Step_Four

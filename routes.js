@@ -39,15 +39,18 @@ router.get("/", function(req,res){
 });
 
 //Welcome screen
-router.get("/welcome/", function(req, res){
-  res.render("welcome");
-});
+// router.get("/welcome/", function(req, res){
+//   res.render("welcome");
+// });
 
 //Main dashboard
 router.get("/dashboard", function(req, res){
   res.render("dashboard", {riders:riders, rewards:rewards});
 });
 
+router.post("/dashboard", function(req, res){
+  res.redirect("/dashboard");
+});
 
 
 //Display rider's dashboard
@@ -111,6 +114,7 @@ router.post("/signup", function(req, res) {
 
   authService.signup(options, res);
 });
+
 
 //////Login page
 router.get("/login", function(req,res){
