@@ -3,8 +3,7 @@
 
 ---
 ### Step_Five
-* Figure out database persistence
-* Add sessions? (will it fix above?)
+* Fix issue of dashboard (redirects) not displaying new users
 * Add login/logout
 
 ---

@@ -11,22 +11,12 @@
       "image": ""
     },
     {
-      "firstName": "test",
-      "lastName": "test",
-      "email": "test",
-      "username": "test",
-      "password": "$2a$10$DUBVxbfnTw10uzO9dg4SZesLh6AnYHYCYx7LvhzA/oskFaJO6pzgu",
-      "id": "59f77f43-411d-492f-803a-7b1fa478efce",
-      "pointBalance": 8000,
-      "image": ""
-    },
-    {
-      "firstName": "test2",
-      "lastName": "test2",
-      "email": "test2@test.com",
-      "username": "test2",
-      "password": "$2a$10$zRE3fCPQ5BKzOUopZ5FiHe5DEkkNzSCxvKGCyt1vSVA8Y.OE24PuK",
-      "id": "feeb1102-34e4-4368-a3dd-0ececd3944db",
+      "firstName": "Lara",
+      "lastName": "Jones",
+      "email": "lara@lara.com",
+      "username": "lara",
+      "password": "$2a$10$qIu/cckfJO1gywxA0.YbrOskXvRNWugElcC7R4KQkrTitYTVMiRye",
+      "id": "530844d9-a1c7-4920-a3dd-719739044def",
       "pointBalance": 8000,
       "image": ""
     }

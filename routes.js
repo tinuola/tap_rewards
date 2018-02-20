@@ -8,14 +8,6 @@ var authService = require('./services/authService');
 //lowdb Usage
 //==============
 //create data json files
-
-// const FileAsync = require("lowdb/adapters/FileAsync");
-// const adapter1 = new FileAsync("data/riderData.json");
-// const adapter2 = new FileAsync("data/rewardData.json");
-// const riderData = low(adapter1);
-// const rewardData = low(adapter2);
-
-
 const FileSync = require("lowdb/adapters/FileSync");
 const adapter1 = new FileSync("data/riderData.json");
 const adapter2 = new FileSync("data/rewardData.json");
@@ -38,20 +30,10 @@ router.get("/", function(req,res){
   res.render("home");
 });
 
-//Welcome screen
-// router.get("/welcome/", function(req, res){
-//   res.render("welcome");
-// });
-
 //Main dashboard
 router.get("/dashboard", function(req, res){
   res.render("dashboard", {riders:riders, rewards:rewards});
 });
-
-router.post("/dashboard", function(req, res){
-  res.redirect("/dashboard");
-});
-
 
 //Display rider's dashboard
 router.get("/dashboard/:id", function(req, res){
@@ -106,12 +88,9 @@ router.post("/signup", function(req, res) {
     username: formUsername,
     password: formPassword,
     id: uniqueId,
-    //signupSuccessRedirectUrl: '/dashboard/'+ uniqueId,
     signupSuccessRedirectUrl: "/dashboard",
-    //signupSuccessRedirectUrl: "/welcome",
     signUpTemplate: signup_view_path
   };
-
   authService.signup(options, res);
 });
 

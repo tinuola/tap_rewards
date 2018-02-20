@@ -49,11 +49,7 @@ exports.signup = function signup(options, res) {
       })
       .write();
     // then redirect
-    //res.redirect(options.signupSuccessRedirectUrl);
+    res.redirect(options.signupSuccessRedirectUrl+ "/" + options.id);
   }
-  var rider = riderData.get('riders').find({id: options.id}).value();
-  console.log(rider);
-  //+ "/" + rider.id
 
-  res.redirect(options.signupSuccessRedirectUrl);
 };
