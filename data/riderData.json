@@ -19,6 +19,26 @@
       "id": "530844d9-a1c7-4920-a3dd-719739044def",
       "pointBalance": 8000,
       "image": ""
+    },
+    {
+      "firstName": "Jessica",
+      "lastName": "Jones",
+      "email": "jj@marvel.com",
+      "username": "jess",
+      "password": "$2a$10$9dz8xvvzFZz2lu2lNx96ROKArJuaGXGLvG8AZPupkxlb8N1WSmygO",
+      "id": "c0431e08-85a8-43e5-88e8-10b65b976074",
+      "pointBalance": 8000,
+      "image": ""
+    },
+    {
+      "firstName": "Luke",
+      "lastName": "Cage",
+      "email": "luke@marvel.com",
+      "username": "luke",
+      "password": "$2a$10$lJXp0RYzDZWdqjEogtybseRPupM832UIlzc2iVvlAPO6IHfjEe/O2",
+      "id": "9020f479-fe80-4269-8818-53dc7d3bf851",
+      "pointBalance": 7300,
+      "image": ""
     }
   ]
 }

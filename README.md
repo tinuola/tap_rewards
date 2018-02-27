@@ -3,8 +3,7 @@
 
 ---
 ### Step_Five
-* Fix issue of dashboard (redirects) not displaying new users
-* Add login/logout
+* ~~Fix issue of dashboard (redirects) not displaying new users~~
 
 ---
 ### Step_Four
@@ -26,7 +25,7 @@
 * ~~Create routes: landing page, login page, dashboard page~~
 * ~~Create basic body (header) template~~
 * ~~Basic bootstrapping~~
-..~~* Forms~~
+..* ~~Forms~~
 ..* ~~Nav bar~~
 * ~~Hard code rider and reward data~~
 * ~~Display (hard-coded) app logic/calculation (no persistence)~~

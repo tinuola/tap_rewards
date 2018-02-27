@@ -35,20 +35,27 @@ router.get("/dashboard", function(req, res){
   res.render("dashboard", {riders:riders, rewards:rewards});
 });
 
+//Liz test...
+router.get("/data", function(req, res){
+  res.sendFile(__dirname + "/data/riderData.json");
+});
+
 //Display rider's dashboard
 router.get("/dashboard/:id", function(req, res){
-  var rider = riderData.get('riders').find({id: req.params.id}).value();
+  const riderData2 = low(adapter1);
+  var rider = riderData2.get('riders').find({id: req.params.id}).value();
   res.render("dashboard2", {rider:rider, rewards:rewards});
 });
 
 //Redeem rewards and update database
 router.post("/dashboard/:id", function(req, res){
   var points = req.body.rewardPoints;
-  var rider = riderData.get('riders').find({id: req.params.id}).value();
+  const riderData2 = low(adapter1);
+  var rider = riderData2.get('riders').find({id: req.params.id}).value();
   var balance = rider.pointBalance;
   balance -= points;
 
-  riderData.get('riders')
+  riderData2.get('riders')
     .find({ id: rider.id })
     .assign({ pointBalance: balance})
     .write();
