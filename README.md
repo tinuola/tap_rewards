@@ -2,6 +2,12 @@
 
 
 ---
+### Step_Six
+* Verify Signups
+* Add login and logout
+* Refactor database "restart" code
+
+---
 ### Step_Five
 * ~~Fix issue of dashboard (redirects) not displaying new users~~
 
