@@ -1,7 +1,11 @@
+/*jshint esversion: 6 */
+
 var uuid = require('uuid');
 var bcrypt = require('bcryptjs');
 var low = require('lowdb');
 var path = require('path');
+var LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
 
 //==============
 //lowdb Usage
@@ -17,16 +21,21 @@ const rewardData = low(adapter2);
 //================
 // takes a plain text password and returns a hash
 function hashPassword(plaintextPassword) {
-  var salt = bcrypt.genSaltSync(10);
+  let salt = bcrypt.genSaltSync(10);
   return bcrypt.hashSync(plaintextPassword, salt);
+}
+
+// compare if plain text password matches hass password
+function comparePassword(plaintextPassword, hashPassword){
+  return bcrypt.compareSync(plaintextPassword, hashPassword);
 }
 
 exports.signup = function signup(options, res) {
   // get all values for the username that are in the database
-  var usernames = riderData.get('riders').map('username').value();
+  let usernames = riderData.get('riders').map('username').value();
 
   // check if username is already taken
-  var usernameIsTaken = usernames.includes(options.username);
+  let usernameIsTaken = usernames.includes(options.username);
 
   // if username is already taken, show error
   if (usernameIsTaken) {
@@ -41,7 +50,6 @@ exports.signup = function signup(options, res) {
         lastName: options.lastName,
         email: options.email,
         username: options.username,
-        // creates hash Password
         password: hashPassword(options.password),
         id: options.id,
         pointBalance: 8000,
@@ -52,4 +60,52 @@ exports.signup = function signup(options, res) {
     res.redirect(options.signupSuccessRedirectUrl+ "/" + options.id);
   }
 
+};
+
+// configure passport
+exports.configurePassport = function(passport) {
+  // Passport serializes and deserializes user instances to and from the session
+
+  // only the user ID is serialized and added to the session
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  // for every request, the id is used to find the user, 
+  // which will be restored to req.user
+  passport.deserializeUser(function(id, done) {
+    // find user in database
+    let user = riderData.get('riders').find({id: id}).value();
+    if(!user) {
+      done({ message: 'Invalid credentials.' }, null);
+    } else {
+      // the object is what will be available for 'request.user'
+      done(null, {id: user.id, username: user.username});
+    }
+  });
+
+  // configures how to autheticate a user when they log in
+
+  // LocalStrategy uses username / password in the database for authentication
+  passport.use(new LocalStrategy(
+    function(username, password, done) {
+      // look for user in database
+      let user = riderData.get('riders').find({ username: username }).value();
+
+      // if user not found, return error
+      if(!user) {
+        return done(null, false, { error: 'Invalid username & password.' });
+      }
+
+      // check if password matches
+      let passwordsMatch = comparePassword(password, user.password);
+      // if passowrd don't match, return error
+      if(!passwordsMatch) {
+        return done(null, false, { error: 'Invalid username & password.' });
+      }
+
+      //else, if username and password match, return the user
+      return done(null, user);
+    }
+  ));
 };

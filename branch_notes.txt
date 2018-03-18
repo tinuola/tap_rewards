@@ -1,10 +1,11 @@
 
-
+---
+### Step_Seven
+* Add login and logout
 
 ---
 ### Step_Six
 * Verify Signups
-* Refactor database "restart" code
 
 ---
 ### Step_Five

@@ -1,13 +1,23 @@
 {
   "riders": [
     {
-      "firstName": "Alice",
-      "lastName": "Magic",
-      "email": "alice@gmail.com",
-      "username": "alice",
-      "password": "$2a$10$WKFskINoRIBr7HcxhsipwunphrFkk7CnOk5pYcAsQfvMkCQvq0wDC",
-      "id": "3a80dc5d-1005-47fb-ae66-5db22c65dc62",
+      "firstName": "Jessica",
+      "lastName": "Jones",
+      "email": "jj@marvel.com",
+      "username": "jess",
+      "password": "$2a$10$ZXCt/Dt7X32cgAgAUInWXO4iRanOkL7.X0hVd.JBjAvPH2d.IyuFq",
+      "id": "b945c588-deac-4243-88ff-7977fde58f65",
       "pointBalance": 8000,
+      "image": ""
+    },
+    {
+      "firstName": "Luke",
+      "lastName": "Cage",
+      "email": "luke@marvel.com",
+      "username": "luke",
+      "password": "$2a$10$8FWy3rnA16ZWGuRVvR3Y0epWEU9oxZ/gv7Oww8Mq7fCEfc5zp5jw2",
+      "id": "cca1745b-df1c-4536-b18e-f16cc558aebf",
+      "pointBalance": 7700,
       "image": ""
     }
   ]

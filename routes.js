@@ -5,6 +5,8 @@ var low = require('lowdb');
 var path = require('path');
 var uuid = require('uuid');
 var authService = require('./services/authService');
+var passport = require('passport');
+authService.configurePassport(passport);
 
 //==============
 //lowdb Usage
@@ -114,12 +116,34 @@ router.post("/signup", function(req, res) {
   };
 
   authService.signup(options, res);
-
 });
 
-//////Login page
+//================
+// Login routes
+//================
+let login_view_path = path.join("auth", "login");
+
+// display login page
 router.get("/login", function(req,res){
-  res.render("login");
+  res.render(login_view_path, { error: [] });
+});
+
+// perform login and redirect to user's dashboard
+router.post('/login', function(req,res,next){
+  passport.authenticate('local', function(err, user, info){
+    if(err){ return next(err); }
+    if(!user) { return res.redirect('/login'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/dashboard/' + req.user.id);
+    });
+  })(req, res, next);
+});
+
+// display logout
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 module.exports = router;
