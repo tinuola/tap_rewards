@@ -1,12 +1,15 @@
 <% include ../partials/header %>
 
 <div class="container">
-
-  <div class="row jumbotron">
-    <h1>Signup Page</h1>
-  </div>
-
   <div class="row login-form-box">
+    <% if(errors){ %>
+      <div class = "alert alert-danger">
+        <% errors.forEach(function(error){ %>
+          <div><%= error %></div>
+        <% }) %>
+      </div>
+    <% } %>
+
     <form action="/signup" method="POST">
 
       <div class="form-group">
@@ -39,5 +42,4 @@
 
     </form>
   </div>
-
 </div>
