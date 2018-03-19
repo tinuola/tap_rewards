@@ -34,16 +34,11 @@ router.get("/", function(req,res){
   res.render("home");
 });
 
-//Main dashboard
-router.get("/dashboard", function(req, res){
-  res.render("dashboard", {riders:riders, rewards:rewards});
-});
-
 //Display rider's dashboard
 router.get("/dashboard/:id", function(req, res){
   const riderData2 = low(adapter1);
   let rider = riderData2.get('riders').find({id: req.params.id}).value();
-  res.render("dashboard2", {rider:rider, rewards:rewards});
+  res.render("dashboard", {rider:rider, rewards:rewards});
 });
 
 //Redeem rewards and update database
@@ -69,8 +64,8 @@ router.post("/dashboard/:id", function(req, res){
 
 let signup_view_path = path.join("auth", "signup");
 
-// display signup page
-router.get("/signup", function(req, res) {
+// display signup page if user is not logged in
+router.get("/signup", isLoggedOut(), function(req, res) {
   res.render(signup_view_path);
 });
 
@@ -84,7 +79,6 @@ router.post("/signup", function(req, res) {
   let formUsername = req.body.username.trim();
   let formPassword = req.body.password.trim();
   let formPassword2 = req.body.password2.trim();
-  // creates random id
   let uniqueId = uuid();
 
   // form validation
@@ -96,7 +90,7 @@ router.post("/signup", function(req, res) {
   req.checkBody('password', 'Passwords do not match').equals(formPassword2);
 
   // check for errors
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
   // if there are errors, display signup page
   if (errors) {
     return res.render(signup_view_path, {errors: errors.map(function(error){
@@ -119,31 +113,54 @@ router.post("/signup", function(req, res) {
 });
 
 //================
-// Login routes
+// login routes
 //================
 let login_view_path = path.join("auth", "login");
 
-// display login page
-router.get("/login", function(req,res){
-  res.render(login_view_path, { error: [] });
+// display login page if user is not logged in
+router.get("/login", isLoggedOut(), function(req,res){
+  res.render(login_view_path, { errors: [] });
 });
 
-// perform login and redirect to user's dashboard
-router.post('/login', function(req,res,next){
-  passport.authenticate('local', function(err, user, info){
-    if(err){ return next(err); }
-    if(!user) { return res.redirect('/login'); }
-    req.logIn(user, function(err) {
-      if (err) { return next(err); }
-      return res.redirect('/dashboard/' + req.user.id);
-    });
-  })(req, res, next);
-});
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login',
+  successFlash: 'You are logged in',
+  failureFlash: true }),
+  function(req, res, user) {
+    res.redirect('/dashboard/' + req.user.id);
+  });
 
 // display logout
 router.get('/logout', function(req, res){
   req.logout();
+  req.session.destroy();
   res.redirect('/');
 });
+
+
+//================
+// middleware
+//================
+// isAuthenticated (passport)
+// when a user is logged in, isAuthenticated return true
+
+function isLoggedIn () {
+	return (req, res, next) => {
+    // logged in user? continue and execute function for the route
+    if (req.isAuthenticated()) return next(); 
+    // user not logged in? skip function for the route, redirect to login page
+    return res.redirect('/login');
+	};
+}
+
+function isLoggedOut () {
+	return (req, res, next) => {
+    // user not logged in? execute function for the route
+    if (!req.isAuthenticated()) return next();
+    // logged in user? redirect to user's dashboard
+    return res.redirect('/dashboard/' + req.user.id);
+	};
+}
+
 
 module.exports = router;

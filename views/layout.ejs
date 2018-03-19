@@ -7,8 +7,23 @@
     <link rel="stylesheet" type="text/css" href="/css/app.css">
   </head>
   <body>
-    <div class="container-fluid">
-      <%- body %>
-    </div>
+
+      <div class="container-fluid">
+          <%- body %>
+        </div>
+
+
+
+    <!-- Remove flash greeting on click -->
+    <script>
+      (function(){
+        var flashes = document.querySelectorAll(".alert");
+        flashes.forEach(function(flash){
+          flash.onclick = function() {
+            flash.parentNode.removeChild(flash)
+          };
+        });
+      })()
+    </script>
   </body>
 </html>

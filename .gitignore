@@ -2,3 +2,4 @@
 node_modules/
 branch_notes.txt
 .env
+data/sessionFile.json

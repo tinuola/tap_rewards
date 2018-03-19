@@ -1,13 +1,19 @@
 <% include partials/header %>
 
 <div class="container">
+
+  <!-- Flash Display -->
+	<% if(error.length > 0){ %>
+    <div class="alert alert-danger"><%= error %></div>
+    <%}%>
+  <% if(success.length > 0){ %>
+    <div class="alert alert-success"><%= success %></div>
+  <%}%>
+
   <div class="row jumbotron">
     <h1>Dashboard</h1>
-
-    <% riders.forEach(function(rider) { %>
-      <li><a href="/dashboard/<%= rider.id %>"><%= rider.firstName %></a></li>
-    <% }) %>
-
+    <h3>Hello <%= rider.firstName %>!</h3>
+    <h4>You have <%= rider.pointBalance %> Points</h4>
   </div>
 
   <div class="row">
@@ -17,7 +23,7 @@
   <div class="row reward-box-container">
     <% rewards.forEach(function(reward){ %>
     <div class="reward-box col-md-6 col-sm-12">
-      <form class="" action="/dashboard" method="POST">
+      <form class="" action="/dashboard/<%= rider.id %>" method="POST">
         <label for="">
           <%= reward.rewardType %>
           <br>

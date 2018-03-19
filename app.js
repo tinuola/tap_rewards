@@ -7,20 +7,22 @@ var expressValidator = require('express-validator');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var store = require('connect-nedb-session')(session);
+var flash = require('connect-flash');
 var routes = require('./routes');
 var path = require('path');
 var app = express();
 require('dotenv').config();
 
 //==============
-// express Usage
+// express usage
 //==============
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(expressLayouts);
 
 //==============
-// bodyParser Usage
+// bodyParser usage
 //==============
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -32,17 +34,18 @@ app.use(expressValidator());
 
 
 //==============
-// Authentication
+// authentication
 //==============
 // cookie
 app.use(cookieParser());
 
 // setup sessions
-var sessionOptions = {
+let sessionOptions = {
+  store: new store({filename: path.join('data', 'sessionFile.json')}),
   secret: "purplestar",
   cookie: {},
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
 };
 
 if (process.env.NODE_ENV === 'production') {
@@ -57,12 +60,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// global variables that are available to the views
+//==============
+// flash
+//==============
+app.use(flash());
+
+
+// global variables available to views dir
 app.use(function(req, res, next) {
   res.locals.errors = null;
-  // req.user comes from passport 
-  // makes 'user' available in the view
+  // req.user from passport; makes 'user' available in the view
   res.locals.user = req.user || null;
+  // req.flash from flash
+  res.locals.error = req.flash('error');
+  res.locals.success = req.flash('success');
   next();
 });
 
@@ -76,7 +87,7 @@ app.use('/', routes);
 //==============
 // Server
 //==============
-var port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log("Tap Rewards server is running...");
 });

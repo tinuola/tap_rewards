@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 
-var uuid = require('uuid');
 var bcrypt = require('bcryptjs');
 var low = require('lowdb');
 var path = require('path');
@@ -79,7 +78,7 @@ exports.configurePassport = function(passport) {
     if(!user) {
       done({ message: 'Invalid credentials.' }, null);
     } else {
-      // the object is what will be available for 'request.user'
+      // the object is what will be available for 'req.user'
       done(null, {id: user.id, username: user.username});
     }
   });
@@ -94,14 +93,14 @@ exports.configurePassport = function(passport) {
 
       // if user not found, return error
       if(!user) {
-        return done(null, false, { error: 'Invalid username & password.' });
+        return done(null, false, { message: 'Invalid username & password.' });
       }
 
       // check if password matches
       let passwordsMatch = comparePassword(password, user.password);
       // if passowrd don't match, return error
       if(!passwordsMatch) {
-        return done(null, false, { error: 'Invalid username & password.' });
+        return done(null, false, { message: 'Invalid username & password.' });
       }
 
       //else, if username and password match, return the user

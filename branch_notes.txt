@@ -1,5 +1,10 @@
 
 ---
+### Step_Eight
+* Persist sessions with NeDB
+* Display flash messages
+
+---
 ### Step_Seven
 * Add login and logout
 
