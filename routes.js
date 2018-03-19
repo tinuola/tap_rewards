@@ -64,8 +64,8 @@ router.post("/dashboard/:id", function(req, res){
 
 let signup_view_path = path.join("auth", "signup");
 
-// display signup page if user is not logged in
-router.get("/signup", isLoggedOut(), function(req, res) {
+// display signup page
+router.get("/signup", function(req, res) {
   res.render(signup_view_path);
 });
 
@@ -117,8 +117,8 @@ router.post("/signup", function(req, res) {
 //================
 let login_view_path = path.join("auth", "login");
 
-// display login page if user is not logged in
-router.get("/login", isLoggedOut(), function(req,res){
+// display login page
+router.get("/login", function(req,res){
   res.render(login_view_path, { errors: [] });
 });
 
@@ -136,31 +136,6 @@ router.get('/logout', function(req, res){
   req.session.destroy();
   res.redirect('/');
 });
-
-
-//================
-// middleware
-//================
-// isAuthenticated (passport)
-// when a user is logged in, isAuthenticated return true
-
-function isLoggedIn () {
-	return (req, res, next) => {
-    // logged in user? continue and execute function for the route
-    if (req.isAuthenticated()) return next(); 
-    // user not logged in? skip function for the route, redirect to login page
-    return res.redirect('/login');
-	};
-}
-
-function isLoggedOut () {
-	return (req, res, next) => {
-    // user not logged in? execute function for the route
-    if (!req.isAuthenticated()) return next();
-    // logged in user? redirect to user's dashboard
-    return res.redirect('/dashboard/' + req.user.id);
-	};
-}
 
 
 module.exports = router;
