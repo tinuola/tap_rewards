@@ -23,7 +23,7 @@ Tap Rewards is a spec/demo loyalty program app that encourages and rewards rider
 * HTML5, CSS3, Bootstrap3
 
 ### Live Preview
-* [Tap Rewards v2]() _(Heroku)_
+* [Tap Rewards v2](https://taprewards2-0.herokuapp.com/) _(Heroku)_
 * Demo Username: Jess
 * Demo Password: Jess
 
