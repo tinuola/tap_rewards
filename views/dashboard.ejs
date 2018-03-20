@@ -1,47 +1,60 @@
-<% include partials/header %>
 
-<div class="container">
 
-  <!-- Flash Display -->
-	<% if(error.length > 0){ %>
-    <div class="alert alert-danger"><%= error %></div>
+<div class="dashboard-body">
+
+  <div class="w3-sidebar w3-bar-block sidebar"> 
+    <h3 class="w3-bar-item sidebar-logo"><a href="/">Tap Rewards</a></h3>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-user">User</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-dashboard">Dashboard</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-rides">Ride History</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-rewards">Rewards History</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-account">Settings</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-help">Help</a>
+    <a href="/" class="w3-bar-item w3-button sidebar-label sidebar-logout">Logout</a>
+  </div>
+  
+  <div class="dashboard"> 
+    <!-- Flash Display -->
+    <% if(error.length > 0){ %>
+      <div class="alert alert-danger"><%= error %></div>
+      <%}%>
+    <% if(success.length > 0){ %>
+      <div class="alert alert-success"><%= success %></div>
     <%}%>
-  <% if(success.length > 0){ %>
-    <div class="alert alert-success"><%= success %></div>
-  <%}%>
 
-  <div class="row jumbotron">
-    <h1>Dashboard</h1>
-    <h3>Hello <%= rider.firstName %>!</h3>
-    <h4>You have <%= rider.pointBalance %> Points</h4>
-  </div>
-
-  <div class="row">
-    <h4>These are the current rewards:</h4>
-  </div>
-
-  <div class="row reward-box-container">
-    <% rewards.forEach(function(reward){ %>
-    <div class="reward-box col-md-6 col-sm-12">
-      <form class="" action="/dashboard/<%= rider.id %>" method="POST">
-        <label for="">
-          <%= reward.rewardType %>
-          <br>
-          <%= reward.rewardPoints %>
-        </label>
-
-          <input type="hidden" class="form-control" name="rewardID" value="<%= reward.rewardId %>">
-
-          <input type="hidden" class="form-control" name="rewardPoints" value="<%= reward.rewardPoints %>">
-
-        <div class="form-group">
-          <input type="submit" class="btn btn-lg btn-primary btn-block" name="" value="Redeem">
-        </div>
-      </form>
+    <div class="row jumbotron">
+      <h1>Dashboard</h1>
+      <h3>Hello <%= rider.firstName %>!</h3>
+      <h4>You have <%= rider.pointBalance %> Points</h4>
     </div>
-    <% }); %>
-  <!--End of reward-box-container-->
-  </div>
 
-<!--End of page container-->
+    <div class="row reward-notice">
+      <h3>These are your current reward options:</h3>
+    </div>
+
+    <div class="row reward-box-container">
+      <% rewards.forEach(function(reward){ %>
+      <div class="reward-box col-md-6 col-sm-12">
+        <form class="" action="/dashboard/<%= rider.id %>" method="POST">
+          <label for="">
+            <%= reward.rewardType %>
+            <br>
+            <%= reward.rewardPoints %>
+          </label>
+
+            <input type="hidden" class="form-control" name="rewardID" value="<%= reward.rewardId %>">
+
+            <input type="hidden" class="form-control" name="rewardPoints" value="<%= reward.rewardPoints %>">
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" name="" value="Redeem">
+          </div>
+        </form>
+      </div>
+      <% }); %>
+    <!--End of reward-box-container-->
+    </div>
+  </div>
+  <!--End of page container-->
 </div>
+
