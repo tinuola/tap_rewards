@@ -1,8 +1,8 @@
 {
-  "name": "javascripters",
-  "version": "1.0.0",
-  "description": "lametro",
-  "main": "index.js",
+  "name": "tap_rewards",
+  "version": "1.0",
+  "description": "a demo transit system loyalty reward web app",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js"
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/CodingForProduct/tap_rewards"
   },
-  "author": "",
+  "author": "tinuola awopetu, carolina bravo, lisa luther, cindy wang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CodingForProduct/tap_rewards/issues"
@@ -19,22 +19,23 @@
   "homepage": "https://github.com/CodingForProduct/tap_rewards#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
     "connect-nedb-session": "0.0.3",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
-    "ejs": "^2.5.6",
-    "express": "^4.15.3",
-    "express-ejs-layouts": "^2.3.0",
-    "express-session": "^1.15.4",
-    "express-validator": "^3.2.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-ejs-layouts": "^2.3.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
     "jquery": "^3.2.1",
-    "json-server": "^0.11.0",
+    "json-server": "^0.12.1",
     "lodash": "^4.17.4",
-    "lowdb": "^0.16.2",
-    "nodemon": "^1.11.0",
-    "passport": "^0.3.2",
+    "lowdb": "^1.0.0",
+    "nedb": "^1.8.0",
+    "nodemon": "^1.12.6",
+    "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "uuid": "^3.1.0"
   }

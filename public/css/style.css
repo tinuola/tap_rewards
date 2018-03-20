@@ -1,204 +1,418 @@
-/* Site-wide styling */
+/**************************************************/
+/* Global Style
+/**************************************************/
+body {
+  font-family: 'Open Sans', sans-serif;
+  /* background-color: red; */
+}
 .container-fluid {
-	margin-left: 0px;
-	margin-left: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-top: 0px;
+  padding: 0px;
 }
 .row {
-	margin-right: 0;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-body {
-	background-color: #D2E9F0;
-}
-/* Removes all underlining from links */
-a:link, a:visited, a:hover, a:active {
-	text-decoration: none;
+.app-blue-bg {
+  background-color: #3563b5;
+  color: #fff;
 }
 
-/* Landing Page */
-.welcome-screen {
-	background: url(/images/metro_bg.jpg) center no-repeat;
-	background-size: cover;
-	height: 700px;
-	font-family: 'Lato', sans-serif;
-	position: relative;
+/**************************************************/
+/* Navigation
+/**************************************************/
+.navbar {
+  margin-bottom: 0px;
+  border-radius: 0px;
+  padding: 10px 40px 0px 40px;
 }
-.welcome-row {
-	margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.navbar-default {
+  background-color: #3563b5;
+  /* background-color: #fdfdfd; */
+  border-color: transparent;
 }
-.text-logo {
-	font-size: 70px;
-	color: #fff;
-	text-transform: uppercase;
-	text-decoration: none;
-}
-.logo-row {
-	text-align: center;
-}
-.button-row {
-	margin-top: 40px;
-	display: flex;
-	justify-content: center;
-}
-.buttons {
-	border: 3px #fff solid;
-	font-size: 30px;
-	color: #fff;
-	text-transform: uppercase;
-	padding: 20px;
-	margin: 10px 30px;
-	/* width: 200px; taken out to better align on xs screen*/
-    text-align: center;
-}
-#button-login:hover {
-	border-color: transparent;
-	color: #193486;
+.navbar-default .navbar-toggle .icon-bar {
 	background-color: #fff;
 }
-#button-signup {
-	color: #fff;
-	background-color: #193486;
+.navbar-default .navbar-toggle {
+	border-color: transparent;
+	border: 0px;
 }
-#button-signup:hover {
+.navbar-default .navbar-collapse {
 	border-color: transparent;
 }
-.about-section h1 {
-    color: #B1497B;
-    text-align: center;
-    font-size: 370%;
+.navbar-default .navbar-brand, 
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+  text-transform: uppercase;
 }
-.steps h2 {
-    text-align: left;
-    font-size: 300%;
-    color: #2D579B;
+/* .navbar-default .navbar-brand,  */
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-brand:hover {
+  color: #fff;
 }
-.steps p {
-    font-size: 125%;
-}
-.step-icon {
-	text-align: center;
-	padding-top: 30px;
-}
-.steps i {
-    font-size: 1500%;
-}
-
-/* Dashboard Page */
-.dashboard-container {
-    margin-left: 25px;
-    margin-right: 15px;
-}
-#dashb-name {
-	font-size: 25px;
-	font-weight: bold;
-}
-#dashb-balance{
-	font-size: 25px;
-	font-weight: bold;
-}
-.rewards-options p {
-  border: 10px solid orange;
-  padding: 75px;
-  text-align: center;
+.nav-text-logo {
   font-size: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  font-weight: 600;
 }
-.redeem-rewards {
-  padding: 20px;
-  text-align: center;
-  font-size: 14px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.nav-icon {
+  margin-right: 10px;
 }
 
-/* Login & Signup Page
-CSS for buttons and formatting */
-/*.blue-bkgd {
+
+/**************************************************/
+/* Landing Page
+/**************************************************/
+.hero {
   height: 700px;
-}*/
-.form-overlay {
-	position: relative;
+  max-height: 100%;
+  background-color: #3563b5; /*#3B67B6 */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.hero h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  /* font-size: 90px; */
+  text-transform: uppercase;
+}
+.hero p {
+  font-size: 30px;
+  font-weight: 400;
+}
+.jumbotron {
+  margin-bottom: 0px;
+}
+.container-fluid .jumbotron {
+  border-radius: 0px;
+}
+.front-cta {
+  text-align: center;
+  padding: 70px 0px;
+}
+.front-cta h2 {
+  font-size: 50px;
+  font-weight: 600;
+  color: #646a7a;
+}
+.front-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.front-container-box {
+  padding: 50px 0;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box1,
+.box3,
+.box5 {
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+  flex-direction: column;
+  align-items: stretch;
+}
+.box1 h3,
+.box3 h3,
+.box5 h3 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.box2,
+.box4,
+.box6 {
+  font-size: 25px;
+  color: #646a7a;
+}
+.box1 {
+  order: 1;
+  background-color: #f9f9f9;
+}
+.box2 {
+  order: 2;
+  background-color: #fdfdfd;
+}
+.box3 {
+  order: 4;
+  background-color: #F9F9F9;
+}
+.box4 {
+  order: 3;
+  background-color: #fdfdfd;
+}
+.box5 {
+  order: 5;
+  background-color: #F9F9F9;
+}
+.box6 {
+  order: 6;
+  background-color: #fdfdfd;
 }
 
-.form-row {
-	background-color: #fff;
-	text-align: center;
-	padding: 65px;
-	/*for Hori&Vert positioning of overlay*/
-	opacity: .85;
-	margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+@media only screen and (max-width: 991px){
+  .box1,
+  .box3,
+  .box5 {
+    padding-left: 70px;
+    padding-right: 70px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .box1 h3,
+  .box3 h3,
+  .box5 h3 {
+    font-size: 25px;
+    margin-bottom: 14px;
+  }
+  .box2,
+  .box4,
+  .box6 {
+    font-size: 20px;
+  }
 }
-.form-container {
-  max-width: 330px;
-  padding: 15px;
+@media only screen and (max-width: 768px){
+  .hero h1 {
+    font-size: 60px;
+  }
+  .hero p {
+    font-size: 22px;
+  }
+  .front-cta h2 {
+    font-size: 35px;
+  }
+  .box1 {
+    order: 2;
+  }
+  .box2 {
+    order:1;
+  }
+  .box5 {
+    order: 6;
+  }
+  .box6 {
+    order: 5;
+  }
+}
+@media only screen and (max-width: 500px){
+  .block2 {
+    display: block;
+  }
+}
+
+
+/**************************************************/
+/* Forms (Signup, Login)
+/**************************************************/
+.form-box {
+  max-width: 400px;
+  width: 80%;
   margin: 0 auto;
 }
-.page-btn {
-	border: 3px #B1497B solid;
-	color: #fff;
-	text-transform: uppercase;
-	width: 175px;
-  	background-color: #B1497B;
+.form-control {
+  height: 50px;
 }
-.lower-form-row {
-  text-align: center;
-}
-h1 {
-  font-size: 350%;
-  color: white;
-}
-h2 {
-  text-align: center;
-}
-h3 {
-  text-align: center;
-}
-h4 {
-  font-size: 14px
-}
-h5 {
-  font-size: 150%
-
-/* Redeem Page */
-.redeem{
-	text-align:center;
+.form-btn {
+  width: 30%;
+  background-color: #3563b5;
+  color: #fff;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 6px;
+  padding: 15px 0px;
+  margin-top: 5px;
 }
 
-/* Footer */
-/*footer {
-	width: 100%;
-	text-align: center;
-	margin-right: 15px; */
+
+/**************************************************/
+/* Signup & Login Pages
+/**************************************************/
+.signup-headline-row,
+.login-headline-row {
+  text-align: center;
+  margin-top: 145px;
+  font-size: 30px;
+  font-weight: 600;
 }
-.site-footer-row {
-	margin-top: 20px;
-	line-height: .5;
-}
-.site-footer-row h5 {
-	text-align: center;
+.signup-form-row,
+.login-form-row {
+  margin-top: 75px;
+  margin-bottom: 50px;
 }
 
-/* Navbar */
-.navbar {
-	padding-bottom: 0px;
-	margin-bottom: 0px;
+@media only screen and (max-width: 675px){
+  .signup-headline-row,
+  .login-headline-row {
+    font-size: 25px;
+    padding: 0 20px;
+  }
 }
-.center-header {
+
+
+/**************************************************/
+/* Dashboard Page
+/**************************************************/
+ .w3-sidebar {
+  width: 210px;
+}
+.w3-container {
+  padding: 0;
+}
+.w3-bar-block .w3-bar-item {
+  padding: 0px 20px 0px 0px;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.w3-bar-block a {
+  text-decoration: none;
+}
+.w3-bar-block h3 {
+  font-size: 22px;
+}
+.w3-bar-block h3,
+.w3-bar-block a:hover {
+  color: #fff;
+}
+.w3-bar-item {
+  font-size: 17px;
+}
+.w3-sidebar .sidebar-logo {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  background-color: rgb(53, 99, 181); 
+}
+.w3-sidebar .sidebar-user {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 0px;
   text-align: center;
+  background-color: rgba(61, 79, 110);
 }
-.navbar-brand {
-  padding: 15px 20px 15px 35px;
+.w3-sidebar .user-image {
+  margin-right: 15px;
+}
+.w3-button:hover {
+  color: #fff!important;
+}
+.w3-button.sidebar-label:hover {
+  background-color: #fff!important;
+  color: rgb(53, 99, 181)!important;
+}
+.sidebar {
+  background-color: rgb(53, 99, 181);
+}
+.sidebar-label {
+  height: 10%;
+}
+.sidebar-icon {
+  margin-right: 7px;
+}
+.dashboard {
+  margin: 0px auto;
+  margin-left: 210px;
+  padding-bottom: 100px;
+}
+.reward-notice {
+  text-align: center;
+  padding: 30px 0 30px 0;
+}
+.reward-notice h3 {
+  font-size: 25px;
+}
+.reward-box-container {
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 0px auto;
+  padding: 30px;
+  background: #e4e3e3;
+}
+.reward-box {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 9px;
+  background: white;
+}
+
+
+/**************************************************/
+/* Footer
+/**************************************************/
+footer {
+  background-color: #3563b5;
+  color: #fff;
+  padding-top: 75px;
+}
+footer li {
+  list-style: none;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 300;
+}
+footer li:hover {
+  color: #a4b2cc;
+}
+.product-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 60px;
+}
+.footer-social-icons-row {
+  display: inline-flex;
+  -webkit-padding-start: 0px;
+}
+.social-icons{
+  margin-right: 15px;
+}
+.team-info{
+  text-align: center;
+  font-size: 13px;
+  background-color: #415882;
+  padding: 40px 0px 20px 0px;
+}
+.team-info a {
+  text-decoration: none;
+}
+.team-info a:visited {
+  color: #fff;
+}
+.text-dim {
+  color: #d69292;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 576px){
+  footer ul {
+    padding-left: 0px;
+  }
+  .product-info {
+    display: block;
+    text-align: center;
+  }
+  .footer-social-icons-row {
+    margin-top: 10px;
+  }
 }

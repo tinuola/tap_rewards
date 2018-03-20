@@ -1,23 +1,38 @@
-# TAP REWARDS <br>
-## Coding for Product Workshop [hosted by Wai-Yin Kwan @ Philosophie / Women Who Code, July 2017]
+# Tap Rewards App v2
 
-## Team project for novice JavaScript coders <br>
-* Problem Statement: LA Metro ridership is declining<br>
-* Assignment: Create an app to incentivize / increase metro ridership<br>
-  * App Purpose/Description: Point based reward system maintains loyal users & promotes repeat visits by new users<br>
-  * Points are acquired via metro use (more metro rides = more points)<br>
-  * Points can be exchanged for metro related discounts/rewards, such as a free metro day or week pass (more points = bigger/better rewards)
+_(Ongoing...) Refinement of a [JavaScript team project](https://github.com/CodingForProduct/tap_rewards) that was created for [Coding-for-Product](http://codingforproduct.com/), a June 2017 web app development mentorship project hosted by Wai-Yin Kwan (Philosophie, Women Who Code)._
 
-<hr>
+## Tap Rewards
+Tap Rewards is a spec/demo loyalty program app that encourages and rewards ridership of a local transit system. Every transit ride/transaction (bus, train, parking, etc) earns users points, which they can redeem for even more discounted or free use of the transit system.
 
-## Team Members:<br>
-* Tinuola Awopetu<br>
-* Cindy Wang<br>
-* Carolina Bravo<br>
-* Lisa Luther<br>
+### Current Functionality
+* Signup and login
+* Basic redemption
 
+### Planned Functionality
+* Ride history
+* Redemption history
+* User account update(s)
+* Update Visual Design / UX / UI
 
-Google Docs project planning document - https://docs.google.com/document/d/1SLUl1XAlJxG8Rjg48cc9j45sVwlbJvwXDWtVRv-Exuc/edit
+### Tech Stack
+* JavaScript
+* Node.js
+* Express.js
+* lowDB
+* HTML5, CSS3, Bootstrap3
 
-> “To err is human but to really foul things up you need a computer”
-> The Economist :trollface:
+### Live Preview
+* [Tap Rewards v2](https://taprewards2-0.herokuapp.com/) _(Heroku)_
+* Demo Username: Jess
+* Demo Password: Jess
+
+### Installation
+_(Requirements: NPM)_
+* $ git clone _[repo]_
+* $ npm install
+* $ node app.js
+* Open localhost:3000
+
+### Bug Report/Fixes/Suggestions?
+* File an issue or make a pull request.

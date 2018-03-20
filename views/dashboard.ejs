@@ -1,90 +1,63 @@
-<!-- Navigation Bar -->
-<%- include('./partials/nav-dashb'); %>
+<div>
+  <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left sidebar" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()"><span class="sidebar-close">&times;</span></button>
 
-<div class="dashboard-container">
-	<!-- User Greeting -->
-	<% if(error.length > 0){ %>
-<div class="alert alert-danger"><%= error %></div>
-<%}%>
-<% if(success.length > 0){ %>
-<div class="alert alert-success"><%= success %></div>
-<%}%>
-	<div class="page-header">
-		<h1>Dashboard</h1>
-		<p id="dashb-name">Hi <%= rider.username %>!</p>
-		<p id="dashb-balance">Your points balance is: <%= rider.pointBalance %></p>
-	</div>
+    <h3 class="w3-bar-item sidebar-logo"><a href="/">Tap Rewards</a></h3>
+    <p class="w3-bar-item sidebar-user"><img src="../../imgs/blank75.png" alt="" class="img-circle img-responseive user-image"><%= rider.firstName %></p>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-dashboard"><i class="fas fa-home sidebar-icon"></i>Dashboard</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-rides"><i class="fas fa-history sidebar-icon"></i>Ride History</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-rewards"><i class="fas fa-gift sidebar-icon"></i>Rewards History</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-account"><i class="fas fa-cog sidebar-icon"></i>Settings</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-help"><i class="fas fa-question-circle sidebar-icon"></i>Help</a>
+    <a href="/" class="w3-bar-item w3-button sidebar-label sidebar-logout"><i class="fas fa-sign-out-alt sidebar-icon"></i>Logout</a>
+  </div>
+  
+  <div class="w3-main dashboard">
+    <div class="app-blue-bg">
+      <button class="w3-button app-blue-bg w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+      <div class="w3-container">
+      </div>
+    </div>
 
-	<!-- Start Rewards -->
-	<div class="row">
-		<!-- One Day Free Metro -->
-		<div class="col-sm-6 col-md-6">
-			<div class="thumbnail text-center"><br>
-				<i class="fa fa-bus fa-5x" aria-hidden="true"></i>
-				<div class="caption">
-					<form action="/dashboard" method="post">
-						<div class="form-group">
-							<label for="One-Day Free Metro Ride"><%= reward[0].rewardType %><br><%= reward[0].pointsRequired %> Points</label><br>
-							<input type= "hidden" name="pointID" value="<%= reward[0].pointID %>">
-							<input type="hidden" name="pointBalance" value="<%= rider.pointBalance %>">
-							<input type = "hidden" name="pointsRequired" value="<%= reward[0].pointsRequired %>">
-						</div>
-						<input type="submit" name="" value="Redeem" class="btn btn-primary">
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- One Week Free Metro -->
-		<div class="col-sm-6 col-md-6">
-			<div class="thumbnail text-center"><br>
-				<i class="fa fa-subway fa-5x" aria-hidden="true"></i>
-				<div class="caption">
-					<form action="/dashboard" method="post">
-						<div class="form-group">
-							<label for="One-Week Free Metro Ride"><%= reward[1].rewardType %><br><%= reward[1].pointsRequired %> Points</label><br>
-							<input type= "hidden" name="pointID" value="<%= reward[1].pointID %>">
-							<input type="hidden" name="pointBalance" value="<%= rider.pointBalance %>">
-							<input type = "hidden" name="pointsRequired" value="<%= reward[1].pointsRequired %>">
-						</div>
-						<input type="submit" name="" value="Redeem" class="btn btn-primary">
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- One Week Free Parking -->
-		<div class="col-sm-6 col-md-6">
-			<div class="thumbnail text-center"><br>
-				<i class="fa fa-product-hunt fa-5x" aria-hidden="true"></i>
-				<div class="caption">
-					<form action="/dashboard" method="post">
-						<div class="form-group">
-							<label for="One-Week Free Car Parking"><%= reward[2].rewardType %><br><%= reward[2].pointsRequired %> Points</label><br>
-							<input type= "hidden" name="pointID" value="<%= reward[2].pointID %>">
-							<input type="hidden" name="pointBalance" value="<%= rider.pointBalance %>">
-							<input type = "hidden" name="pointsRequired" value="<%= reward[2].pointsRequired %>">
-						</div>
-						<input type="submit" name="" value="Redeem" class="btn btn-primary">
-					</form>
-				</div>
-			</div>
-		</div>
-		<!-- Free Lyft-Uber -->
-		<div class="col-sm-6 col-md-6">
-			<div class="thumbnail text-center"><br>
-				<i class="fa fa-car fa-5x" aria-hidden="true"></i>
-				<div class="caption">
-					<form action="/dashboard" method="post">
-						<div class="form-group">
-							<label for="Free Lyft/Uber Ride (5 miles)"><%= reward[3].rewardType %><br><%= reward[3].pointsRequired %> Points</label><br>
-							<input type= "hidden" name="pointID" value="<%= reward[3].pointID %>">
-							<input type="hidden" name="pointBalance" value="<%= rider.pointBalance %>">
-							<input type = "hidden" name="pointsRequired" value="<%= reward[3].pointsRequired %>">
-						</div>
-						<input type="submit" name="" value="Redeem" class="btn btn-primary">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Rewards -->
+  <!-- <div class="dashboard">  -->
+      <div class="w3-container">
+    <!-- Flash Display -->
+    <% if(error.length > 0){ %>
+      <div class="alert alert-danger"><%= error %></div>
+      <%}%>
+    <% if(success.length > 0){ %>
+      <div class="alert alert-success"><%= success %></div>
+    <%}%>
+
+    <div class="row jumbotron">
+      <h1>Dashboard</h1>
+      <h3>Hello <%= rider.firstName %>!</h3>
+      <h4>You have <%= rider.pointBalance %> Points.</h4>
+    </div>
+
+    <div class="row reward-notice">
+      <h3>These are your current reward options:</h3>
+    </div>
+
+    <div class="row reward-box-container">
+      <% rewards.forEach(function(reward){ %>
+      <div class="reward-box col-md-6 col-sm-12">
+        <form class="" action="/dashboard/<%= rider.id %>" method="POST">
+          <label for="">
+            <%= reward.rewardType %>
+            <br>
+            <%= reward.rewardPoints %> Points
+          </label>
+            <input type="hidden" class="form-control" name="rewardID" value="<%= reward.rewardId %>">
+            <input type="hidden" class="form-control" name="rewardPoints" value="<%= reward.rewardPoints %>">
+          <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" name="" value="Redeem">
+          </div>
+        </form>
+      </div>
+      <% }); %>
+    </div> <!--End of reward-box-container-->
+  </div> <!--End of dashboard-->
+  </div>
 </div>
+

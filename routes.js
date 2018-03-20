@@ -1,142 +1,141 @@
+/*jshint esversion: 6 */
+
 var router = require('express').Router();
 var low = require('lowdb');
 var path = require('path');
 var uuid = require('uuid');
 var authService = require('./services/authService');
 var passport = require('passport');
-authService.configurePassport(passport)
+authService.configurePassport(passport);
 
-// connect to database
-// path.join will take the parameters and create a path using the
-// right type of slashes (\ vs /) based on the operatin system
-var db = low(path.join('data', 'riderData.json'));
+//==============
+//lowdb Usage
+//==============
+//create data json files
+const FileSync = require("lowdb/adapters/FileSync");
+const adapter1 = new FileSync("data/riderData.json");
+const adapter2 = new FileSync("data/rewardData.json");
+const riderData = low(adapter1);
+const rewardData = low(adapter2);
 
-//==========================
-// root route
-//==========================
-// display - landing page
-router.get('/', function (req, res) {
-  res.render('welcome');
+//==============
+//Database data
+//==============
+//Get all info from rider and reward dbs
+let riders = riderData.get("riders").value();
+let rewards = rewardData.get("rewards").value();
+
+//==============
+//Routes
+//==============
+
+//Landing page
+router.get("/", function(req,res){
+  res.render("home");
 });
 
-//==========================
-// reward routes
-//==========================
-// display dashboard - with rider data and rewards
-router.get('/dashboard', function (req, res) {
-	// pass data to template
-  var rider = db.get('riders').find({ username: 'Alice' }).value()
-  var reward = db.get('rewards').value()
-  res.render('dashboard', {rider: rider, reward: reward })
+//Display rider's dashboard
+router.get("/dashboard/:id", function(req, res){
+  const riderData2 = low(adapter1);
+  let rider = riderData2.get('riders').find({id: req.params.id}).value();
+  res.render("dashboard", {rider:rider, rewards:rewards});
 });
 
-// Select reward from form, update balance
-// Redirect to redeem page to display redemption and new balance message
-router.post('/dashboard', function(req, res) {
-    console.log(req.body)
-    // get data from form/dashboard page
-    var pointsMinus = req.body.pointsRequired;
-    var currentBalance = req.body.pointBalance;
-    var id = req.body.pointID;
+//Redeem rewards and update database
+router.post("/dashboard/:id", function(req, res){
+  let points = req.body.rewardPoints;
+  const riderData2 = low(adapter1);
+  let rider = riderData2.get('riders').find({id: req.params.id}).value();
+  let balance = rider.pointBalance;
+  balance -= points;
 
-    //update user balance
-    db.get('riders')
-      .find({ username: 'Alice' })
-      .assign({ pointBalance: currentBalance - pointsMinus })
-      .write()
-// redirect
-  res.redirect('redeem' + '/' + id)
+  riderData2.get('riders')
+    .find({ id: rider.id })
+    .assign({ pointBalance: balance})
+    .write();
+
+  res.redirect("/dashboard/" + rider.id);
 });
 
-// display one reward on redeem page, using ":id"
-router.get('/redeem/:pointID', function(req, res) {
-    var rider = db.get('riders').find({ username: 'Alice' }).value()
-    var reward = db.get('rewards').find({ pointID: req.params.pointID }).value()
-  res.render('redeem', { reward: reward || {}, rider: rider || {},})
-})
-//==========================
+//================
 // auth routes
-//==========================
+//================
+//// User signup 
 
-var signup_view_path = path.join('auth', 'signup');
-var login_view_path = path.join('auth', 'login');
-// var logout_view_path = path.join('auth', 'logout');
+let signup_view_path = path.join("auth", "signup");
 
 // display signup page
-// router.get('/signup', function (req, res) {
-//   res.render(signup_view_path, { errors: [] })
-// });
-router.get('/signup', function(req, res) {
-  res.render(signup_view_path)
-})
+router.get("/signup", function(req, res) {
+  res.render(signup_view_path);
+});
 
 // create user
-router.post('/signup', function(req, res) {
+router.post("/signup", function(req, res) {
+  
   // remove extra spaces
-  var username = req.body.username.trim();
-  var password = req.body.password.trim();
-  var password2 = req.body.password2.trim();
-  var tapCard = req.body.tapCard.trim();
-  var email = req.body.email.trim();
-// console.log(username)
+  let formFirstName = req.body.firstname.trim();
+  let formLastName = req.body.lastname.trim();
+  let formEmail = req.body.email.trim();
+  let formUsername = req.body.username.trim();
+  let formPassword = req.body.password.trim();
+  let formPassword2 = req.body.password2.trim();
+  let uniqueId = uuid();
 
-// validate form data
+  // form validation
   req.checkBody('username', 'Username must have at least 3 characters').isLength({min: 3});
   req.checkBody('password', 'Password must have at least 3 characters').isLength({min: 3});
   req.checkBody('username', 'Username is required').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
-  req.checkBody('password2', 'Confirm password is required').notEmpty();
-  req.checkBody('password', 'Password do not match').equals(password2);
+  req.checkBody('password2', 'Password confirmation is required').notEmpty();
+  req.checkBody('password', 'Passwords do not match').equals(formPassword2);
 
   // check for errors
-  var errors = req.validationErrors();
+  let errors = req.validationErrors();
   // if there are errors, display signup page
   if (errors) {
-    return res.render(signup_view_path, {errors: errors.map(function(error) {return error.msg})})
+    return res.render(signup_view_path, {errors: errors.map(function(error){
+      return error.msg;})
+    });
   }
 
-  var options = {
-    username: username,
-    password: password,
-    tapCard: tapCard,
-    email: email,
-    successRedirectUrl: '/dashboard',
-    signUpTemplate: signup_view_path,
-  }
-  authService.signup(options,res);
-})
+  let options = {
+    firstName: formFirstName,
+    lastName: formLastName,
+    email: formEmail,
+    username: formUsername,
+    password: formPassword,
+    id: uniqueId,
+    signupSuccessRedirectUrl: "/dashboard",
+    signUpTemplate: signup_view_path
+  };
+
+  authService.signup(options, res);
+});
+
+//================
+// login routes
+//================
+let login_view_path = path.join("auth", "login");
 
 // display login page
-router.get('/login', function (req, res) {
-  // res.render('login');
-  res.render(login_view_path, { errors: [] })
+router.get("/login", function(req,res){
+  res.render(login_view_path, { errors: [] });
 });
 
-// peform login
-router.post(
-  '/login',
-  passport.authenticate(
-    'local',
-    {
-      successRedirect:'/dashboard',
-      failureRedirect:'/login',
-      failureFlash: true,
-      successFlash: 'You are logged in',
-    }
-  )
-)
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login',
+  successFlash: 'You are logged in',
+  failureFlash: true }),
+  function(req, res, user) {
+    res.redirect('/dashboard/' + req.user.id);
+  });
 
 // display logout
-router.get('/logout', function(req, res) {
+router.get('/logout', function(req, res){
   req.logout();
-  req.flash('success', 'You are logged out');
-  res.redirect('/')
-  // res.render(logout_view_path)
-})
-
-// display password reset page
-router.get('/resetpw', function (req, res) {
-  res.render('resetpw');
+  req.session.destroy();
+  res.redirect('/');
 });
+
 
 module.exports = router;

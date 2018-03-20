@@ -1,72 +1,34 @@
 {
   "riders": [
     {
-      "username": "Alice",
-      "email": "crazycatlady@yahoo.com",
-      "tapCard": "12345678",
-      "pointBalance": 5000
-    },
-    {
-      "username": "lucy",
-      "id": "118dbd13-0de7-48fe-bd53-fbbaf7f1b73b",
-      "email": "lucy@gmail.com",
-      "tapCard": "20192020",
-      "pointBalance": 5000,
-      "password": "$2a$10$WzbbktKQ4VAloGVHHLlwS.k.jfZA.0P.w0OcDoiOwgbLf.siuVITK"
-    },
-    {
-      "username": "Donald Trump",
-      "id": "7f6376eb-95d0-4b7c-9d31-325e007837ad",
-      "email": "thedonald@trumptowers.com",
-      "tapCard": "666",
-      "pointBalance": 5000,
-      "password": "$2a$10$mGL9runzsEyVAN3EJiOW7OJI1XkrUEi2ExsAjlaEAmjj7jqm2wS/q"
-    },
-    {
-      "username": "Alice Green",
-      "id": "c02ae27b-470b-43d7-9194-7555fd46c0c1",
-      "email": "alicegreen@gmail.com",
-      "tapCard": "12345678",
-      "pointBalance": 5000,
-      "password": "$2a$10$Wp8TRTfBcXUyB85POboG4OSsNn0eudCTGFKz0pEmyqOTn9T3Gx3mC"
-    },
-    {
-      "username": "Jessica Jones",
-      "id": "3ef868bb-1aac-4743-b5c8-0fb9ddda8a44",
+      "firstName": "Jessica",
+      "lastName": "Jones",
       "email": "jj@marvel.com",
-      "tapCard": "20182019",
-      "pointBalance": 5000,
-      "password": "$2a$10$HJ1XokEUY/0a6T9YoKDF/O37tdhxPEl/ci4bF37lEuBrYe5D1J9bq"
+      "username": "jess",
+      "password": "$2a$10$ZXCt/Dt7X32cgAgAUInWXO4iRanOkL7.X0hVd.JBjAvPH2d.IyuFq",
+      "id": "b945c588-deac-4243-88ff-7977fde58f65",
+      "pointBalance": 7200,
+      "image": ""
     },
     {
-      "username": "Liza",
-      "id": "94c7f046-dd79-4613-8ee5-7143ed0788ed",
-      "email": "liza@yahoo.com",
-      "tapCard": "55990099",
-      "pointBalance": 5000,
-      "password": "$2a$10$8bKkMJDz2GmUMYGcgkY10OW5OpRDRAwg84c8KBudbeqafSyO9Uoyy"
-    }
-  ],
-  "rewards": [
-    {
-      "rewardType": "One-Day Free Metro Ride",
-      "pointsRequired": 50,
-      "pointID": "1"
+      "firstName": "Luke",
+      "lastName": "Cage",
+      "email": "luke@marvel.com",
+      "username": "luke",
+      "password": "$2a$10$8FWy3rnA16ZWGuRVvR3Y0epWEU9oxZ/gv7Oww8Mq7fCEfc5zp5jw2",
+      "id": "cca1745b-df1c-4536-b18e-f16cc558aebf",
+      "pointBalance": 6200,
+      "image": ""
     },
     {
-      "rewardType": "One-Week Free Metro Ride",
-      "pointsRequired": 100,
-      "pointID": "2"
-    },
-    {
-      "rewardType": "One-Day Free Car Parking",
-      "pointsRequired": 150,
-      "pointID": "3"
-    },
-    {
-      "rewardType": "Free Lyft/Uber Ride (5 miles)",
-      "pointsRequired": 200,
-      "pointID": "4"
+      "firstName": "Alice",
+      "lastName": "Wonderland",
+      "email": "alice@yahoo.com",
+      "username": "alice",
+      "password": "$2a$10$kKAv1gDge4M5jGwTid5YTONaIqp3ytlzCzGWcm3dDM5IzhNwFkrv6",
+      "id": "8c230839-1213-4fd0-b484-d27530bb57bc",
+      "pointBalance": 7000,
+      "image": ""
     }
   ]
 }
