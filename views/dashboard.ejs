@@ -1,0 +1,63 @@
+<div>
+  <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left sidebar" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()"><span class="sidebar-close">&times;</span></button>
+
+    <h3 class="w3-bar-item sidebar-logo"><a href="/">Tap Rewards</a></h3>
+    <p class="w3-bar-item sidebar-user"><img src="../../imgs/blank75.png" alt="" class="img-circle img-responseive user-image"><%= rider.firstName %></p>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-dashboard"><i class="fas fa-home sidebar-icon"></i>Dashboard</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-rides"><i class="fas fa-history sidebar-icon"></i>Ride History</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-rewards"><i class="fas fa-gift sidebar-icon"></i>Rewards History</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-account"><i class="fas fa-cog sidebar-icon"></i>Settings</a>
+    <a href="#" class="w3-bar-item w3-button sidebar-label sidebar-help"><i class="fas fa-question-circle sidebar-icon"></i>Help</a>
+    <a href="/" class="w3-bar-item w3-button sidebar-label sidebar-logout"><i class="fas fa-sign-out-alt sidebar-icon"></i>Logout</a>
+  </div>
+  
+  <div class="w3-main dashboard">
+    <div class="app-blue-bg">
+      <button class="w3-button app-blue-bg w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
+      <div class="w3-container">
+      </div>
+    </div>
+
+  <!-- <div class="dashboard">  -->
+      <div class="w3-container">
+    <!-- Flash Display -->
+    <% if(error.length > 0){ %>
+      <div class="alert alert-danger"><%= error %></div>
+      <%}%>
+    <% if(success.length > 0){ %>
+      <div class="alert alert-success"><%= success %></div>
+    <%}%>
+
+    <div class="row jumbotron">
+      <h1>Dashboard</h1>
+      <h3>Hello <%= rider.firstName %>!</h3>
+      <h4>You have <%= rider.pointBalance %> Points.</h4>
+    </div>
+
+    <div class="row reward-notice">
+      <h3>These are your current reward options:</h3>
+    </div>
+
+    <div class="row reward-box-container">
+      <% rewards.forEach(function(reward){ %>
+      <div class="reward-box col-md-6 col-sm-12">
+        <form class="" action="/dashboard/<%= rider.id %>" method="POST">
+          <label for="">
+            <%= reward.rewardType %>
+            <br>
+            <%= reward.rewardPoints %> Points
+          </label>
+            <input type="hidden" class="form-control" name="rewardID" value="<%= reward.rewardId %>">
+            <input type="hidden" class="form-control" name="rewardPoints" value="<%= reward.rewardPoints %>">
+          <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" name="" value="Redeem">
+          </div>
+        </form>
+      </div>
+      <% }); %>
+    </div> <!--End of reward-box-container-->
+  </div> <!--End of dashboard-->
+  </div>
+</div>
+

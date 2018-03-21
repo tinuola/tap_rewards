@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+
+<div class="row signup-headline-row">
+    <p>Sign up and get rewarded for your rides!</p>
+</div>
+
+<div class="row signup-form-row form-box">
+  <!-- Flash Display -->
+  <% if(errors){ %>
+    <div class = "alert alert-danger">
+      <% errors.forEach(function(error){ %>
+        <div><%= error %></div>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <form action="/signup" method="POST">
+    <div class="form-group">
+        <input type="text" class="form-control" name="firstname" value="" placeholder="First Name">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="lastname" value="" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" value="" placeholder="Email Address">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="username" value="" placeholder="Enter a Username">
+    </div>      
+    <div class="form-group">
+        <input type="password" class="form-control" name="password" value="" placeholder="Enter a Password">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password2" value="" placeholder="Confirm Password">
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-btn" name="" value="Sign Up">
+    </div>
+  </form>
+
+  <p><a href='/login'>Already have an account?</a></p>
+</div>
+
+
+<% include ../partials/footer %>

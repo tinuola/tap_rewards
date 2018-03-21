@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+branch_notes.md
+.env
+data/sessionFile.json
