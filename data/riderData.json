@@ -29,6 +29,16 @@
       "id": "8c230839-1213-4fd0-b484-d27530bb57bc",
       "pointBalance": 7000,
       "image": ""
+    },
+    {
+      "firstName": "Lara",
+      "lastName": "Martins",
+      "email": "lara@yahoo.com",
+      "username": "lara",
+      "password": "$2a$10$KUAg0Fte.CVRMt7x8DfBP.HI73j/FwZEYwqxXuL.TUWmtdPbqjqf2",
+      "id": "3376bc7a-56b0-4623-b176-828a1e5908d8",
+      "pointBalance": 8000,
+      "image": ""
     }
   ]
 }
