@@ -2,4 +2,5 @@
 node_modules/
 branch_notes.md
 .env
+.env.secrets
 data/sessionFile.json
